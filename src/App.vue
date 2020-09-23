@@ -5,7 +5,7 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Source+Sans+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Source+Sans+Pro:wght@300&display=swap');
 * {
   margin: 0rem;
   padding: 0rem;
