@@ -1,7 +1,8 @@
 <template>
   <div class="home">
+    <Navbar />
     <div class="wrapper">
-      <h1>This is the mainpage</h1>
+      <h1 class="logoName">webmeet.</h1>
       <div class="container">
         <Meeting />
         <Meeting />
@@ -15,10 +16,12 @@
 <script>
 // @ is an alias to /src
 import Meeting from '@/components/Meeting.vue'
+import Navbar from '@/components/Navbar.vue'
 export default {
   name: 'Home',
   components: {
     Meeting,
+    Navbar,
   },
   created() {
     this.getMeetings()
