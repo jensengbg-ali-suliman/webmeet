@@ -1,17 +1,15 @@
 <template>
   <div class="home">
     <Navbar />
+    <img src="../assets/right-shape.svg" alt="" class="side right" />
+    <img src="../assets/left-shape.svg" alt="" class="side left" />
     <div class="wrapper">
       <h1 class="logoName">webmeet.</h1>
       <p>
         Expolore meeting about your favorit subjects from the comfort of your
         home
       </p>
-      <!-- <div class="container">
-        <Meeting />
-        <Meeting />
-        <Meeting />
-      </div> -->
+      <button class="cta">explore</button>
     </div>
   </div>
 </template>
@@ -56,9 +54,20 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
+  position: relative;
+
+  .side {
+    position: absolute;
+    z-index: -10;
+  }
+
+  .right {
+    top: 0;
+    right: 0;
+  }
 
   .wrapper {
     width: 100%;
@@ -68,10 +77,10 @@ export default {
     justify-content: flex-start;
     align-items: center;
     h1 {
-      margin-top: 10rem;
+      margin-top: 8rem;
       text-align: center;
-      font-family: 'Sacramento', cursive;
-      font-size: 6rem;
+      font-family: 'Comfortaa', cursive;
+      font-size: 3rem;
     }
 
     p {
@@ -80,14 +89,18 @@ export default {
       color: #666;
       font-size: 1.2rem;
       line-height: 2rem;
+      margin: 1rem 0rem;
     }
 
-    .container {
-      padding: 5rem 10rem;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
+    .cta {
+      padding: 0.8rem 4rem;
+      margin: 5rem 0rem 0rem 0rem;
+      border: none;
+      color: #f6f6f6;
+      background: #faa916;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 1rem;
     }
   }
 }
