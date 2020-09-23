@@ -2,17 +2,18 @@
   <div class="home">
     <div class="wrapper">
       <h1>This is the mainpage</h1>
+      <Meeting />
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Meeting from "@/components/Meeting.vue";
+import Meeting from '@/components/Meeting.vue'
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    Meeting
-  }
-};
+    Meeting,
+  },
+}
 </script>
