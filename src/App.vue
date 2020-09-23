@@ -12,4 +12,9 @@
   box-sizing: border-box;
   font-family: 'Source Sans Pro', sans-serif;
 }
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
 </style>
