@@ -32,7 +32,7 @@ nav {
     margin: 0rem 1rem;
     font-size: 14px;
     text-decoration: none;
-    color: #888;
+    color: #666;
   }
 
   .login {
