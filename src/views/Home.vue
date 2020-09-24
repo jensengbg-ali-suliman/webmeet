@@ -11,6 +11,7 @@
       </p>
       <button class="cta">explore</button>
     </div>
+    <img src="../assets/laptop.svg" alt="" class="bottom-img" />
   </div>
 </template>
 
@@ -58,7 +59,8 @@ export default {
   height: 100%;
   overflow-x: hidden;
   position: relative;
-
+  display: flex;
+  flex-direction: column;
   .side {
     position: absolute;
     z-index: -10;
@@ -101,7 +103,23 @@ export default {
       font-weight: bold;
       border-radius: 5px;
       font-size: 1rem;
+      transition: all 0.4s ease;
+      cursor: pointer;
+
+      &:hover {
+        color: #faa916;
+        background: #f6f6f6;
+        box-shadow: 2px 6px 8px #0001;
+        transform: translateY(-0.4rem);
+      }
     }
+  }
+
+  .bottom-img {
+    margin: 2rem 0rem;
+    align-self: flex-end;
+    transform: scale(0.8);
+    opacity: 0.6;
   }
 }
 </style>
