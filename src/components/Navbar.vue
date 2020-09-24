@@ -18,7 +18,7 @@ export default {
 nav {
   width: 100%;
   height: 5rem;
-  padding: 1rem 6rem;
+  padding: 1rem 8rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
