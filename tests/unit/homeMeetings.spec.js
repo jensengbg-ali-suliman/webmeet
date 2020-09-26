@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Home from '@/views/Home.vue/'
+import Meetings from '@/views/Meetings.vue'
 
 const mockMeetingsData = [
   {
