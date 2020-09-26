@@ -1,45 +1,41 @@
 <template>
   <div class="meeting">
-    <img src="https://picsum.photos/200?random=1" alt="" />
+    <img src="https://picsum.photos/200?random=1" alt />
     <section class="info">
-      <h3>Lorem, ipsum dolor.</h3>
-      <p class="date">WED, SEP 09:00 AM</p>
-      <p class="description">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <button>more</button>
+      <h3>{{meeting.meetingName}}</h3>
+      <p class="date">{{meeting.meetingDate}} - {{meeting.meetingTime}}</p>
+      <p class="description">{{meeting.meetingDescription}}</p>
+      <button @click="showMeeting(meeting.meetingID)">more</button>
     </section>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Meeting',
-  created() {
-    fetch('https://api.jsonbin.io/b/5f6b3568302a837e956c0b81', {
-      method: 'GET',
-      headers: {
-        'secret-key':
-          '$2b$10$JU3Aru2zmVBe81YgmOpOdeGXs2o1wG8/zScHJo64GAltQ44l5k/qG',
-      },
-    }).then((response) => response.json())
-    //.then((data) => console.log(data))
+  name: "Meeting",
+  props: {
+    meeting: Object
   },
-}
+  methods: {
+    showMeeting: function(id) {
+      console.log(id);
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 .meeting {
   width: 20rem;
-  height: 25rem;
+  min-height: 25rem;
   background: #fcfcfc;
   border-radius: 10px;
   transition: all 0.4s ease;
-  margin: 0rem 1rem;
+  margin: 0rem 1.5rem;
 
   img {
     width: 100%;
-    height: 50%;
+    height: 12rem;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
   }
@@ -74,6 +70,14 @@ export default {
       border: none;
       color: #fff;
       border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-weight: bold;
+
+      &:hover {
+        background: #e6e6e6;
+        color: #f49f0a;
+      }
     }
   }
 
