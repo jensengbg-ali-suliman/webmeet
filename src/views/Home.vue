@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <Navbar />
-    <img src="../assets/right-shape.svg" alt="" class="side right" />
-    <img src="../assets/left-shape.svg" alt="" class="side left" />
+    <img src="../assets/right-shape.svg" alt class="side right" />
+    <img src="../assets/left-shape.svg" alt class="side left" />
     <div class="wrapper">
       <h1 class="logoName">webmeet.</h1>
       <p>
@@ -11,46 +11,22 @@
       </p>
       <button class="cta">explore</button>
     </div>
-    <img src="../assets/laptop.svg" alt="" class="bottom-img" />
+    <img src="../assets/laptop.svg" alt class="bottom-img" />
+    <meetings />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-//import Meeting from '@/components/Meeting.vue'
-import Navbar from '@/components/Navbar.vue'
+import Meetings from "@/components/Meetings.vue";
+import Navbar from "@/components/Navbar.vue";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    // Meeting,
-    Navbar,
-  },
-  created() {
-    this.getMeetings()
-  },
-  data: () => {
-    return {
-      meetings: 'asdasd',
-    }
-  },
-  methods: {
-    getMeetings: async function() {
-      const response = await fetch(
-        'https://api.jsonbin.io/b/5f6b3568302a837e956c0b81',
-        {
-          method: 'GET',
-          headers: {
-            'secret-key':
-              '$2b$10$JU3Aru2zmVBe81YgmOpOdeGXs2o1wG8/zScHJo64GAltQ44l5k/qG',
-          },
-        }
-      )
-      const data = await response.json()
-      console.log(data)
-      this.meetings = data
-    },
-  },
-}
+    Meetings,
+    Navbar
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -81,7 +57,7 @@ export default {
     h1 {
       margin-top: 8rem;
       text-align: center;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Comfortaa", cursive;
       font-size: 3rem;
     }
 
@@ -96,7 +72,7 @@ export default {
 
     .cta {
       padding: 0.8rem 4rem;
-      margin: 5rem 0rem 0rem 0rem;
+      margin: 5rem 0rem 1rem 0rem;
       border: none;
       color: #f6f6f6;
       background: #faa916;
@@ -109,8 +85,8 @@ export default {
       &:hover {
         color: #faa916;
         background: #f6f6f6;
-        box-shadow: 2px 6px 8px #0001;
-        transform: translateY(-0.4rem);
+        box-shadow: 2px 6px 8px #0002;
+        //transform: translateY(-0.4rem);
       }
     }
   }
@@ -119,7 +95,7 @@ export default {
     margin: 2rem 0rem;
     align-self: flex-end;
     transform: scale(0.8);
-    opacity: 0.6;
+    opacity: 1;
   }
 }
 </style>
