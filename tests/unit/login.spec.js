@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Login from '@/views/Login.vue'
+import Signup from '@/views/Signup.vue'
 
 describe('Login.vue', () => {
   it('should rescive data and save it to send it to database', () => {
