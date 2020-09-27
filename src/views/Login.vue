@@ -19,14 +19,14 @@
         </div>
 
         <label for="email">your email</label>
-        <input type="text" v-model="email" />
+        <input type="email" v-model="email" />
 
         <label for="password">password</label>
         <input type="password" v-model="password" />
 
         <label for="emailConf">confirm password</label>
         <input type="password" v-model="passwordConfirmation" />
-        <button>continue</button>
+        <button @click="sendUserInfo">continue</button>
       </section>
     </div>
   </div>
@@ -44,8 +44,21 @@ export default {
       lastName: "",
       email: "",
       password: "",
-      passwordConfirmation: ""
+      passwordConfirmation: "",
+      user: {}
     };
+  },
+  methods: {
+    sendUserInfo: function() {
+      let userToSend = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password
+      };
+
+      console.log(userToSend);
+    }
   }
 };
 </script>
@@ -110,6 +123,9 @@ export default {
 
       label {
         margin: 1.4rem 0rem 0.6rem 0rem;
+        color: #afafaf;
+        font-weight: bold;
+
         &::first-letter {
           text-transform: uppercase;
         }
@@ -121,7 +137,7 @@ export default {
         border: none;
         background: #f5f5f5;
         border-radius: 6px;
-        color: #888;
+        color: #222;
       }
 
       button {
