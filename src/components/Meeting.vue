@@ -31,7 +31,7 @@ export default {
   background: #fcfcfc;
   border-radius: 10px;
   transition: all 0.4s ease;
-  margin: 0rem 1.5rem;
+  margin: 1rem;
 
   img {
     width: 100%;
