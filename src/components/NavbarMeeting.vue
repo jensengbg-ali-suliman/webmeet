@@ -1,7 +1,7 @@
 <template>
   <nav>
     <a href class="link back" @click="routeToHome">
-      <span>&#x276E;</span> back
+      <span>&#x276E;</span> Sign up
     </a>
   </nav>
 </template>
