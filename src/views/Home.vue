@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Navbar />
+    <Navbar :user="userID" />
     <img src="../assets/right-shape.svg" alt class="side right" />
     <img src="../assets/left-shape.svg" alt class="side left" />
     <div class="wrapper">
@@ -12,7 +12,7 @@
       <button class="cta">explore</button>
     </div>
     <img src="../assets/laptop.svg" alt class="bottom-img" />
-    <meetings />
+    <meetings :user="userID" />
     <Footer />
   </div>
 </template>
@@ -28,6 +28,16 @@ export default {
     Meetings,
     Navbar,
     Footer
+  },
+  data: () => {
+    return {
+      userID: ""
+    };
+  },
+  created() {
+    console.log(this.$route.params);
+    this.userID = this.$route.params.id;
+    console.log(this.userID, "userID");
   }
 };
 </script>
