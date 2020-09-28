@@ -14,11 +14,12 @@
 export default {
   name: "Meeting",
   props: {
-    meeting: Object
+    meeting: Object,
+    user: String
   },
   methods: {
     showMeeting: function(id) {
-      console.log(id);
+      this.$router.push("/meeting/" + id + "/" + this.user);
     }
   }
 };
