@@ -1,10 +1,9 @@
 <template>
   <nav>
-    <img src="../assets/LOGO webmeet.svg" alt class="logo" />
-    <a href="/" class="link">Main page</a>
-    <a href="/my-meetings" class="link">My meetings</a>
-    <a href class="link login">Log in</a>
-    <a href class="link signup">Sign up</a>
+    <img src="../assets/LOGO webmeet.svg" alt class="logo" @click="routeToHome" />
+    <a href class="link" @click="routeToHome">Main page</a>
+    <a href class="link" @click="routeToMyMeetigs">My meetings</a>
+    <a href class="link logout" @click="routeToLogin">Log out</a>
   </nav>
 </template>
 
@@ -14,7 +13,21 @@ make the meetings link visible if data var "loggedIn" is true
 
 <script>
 export default {
-  name: "Navbar"
+  name: "Navbar",
+  props: {
+    user: String
+  },
+  methods: {
+    routeToHome: function() {
+      this.$router.push("/home/" + this.user);
+    },
+    routeToLogin: function() {
+      this.$router.push("/login");
+    },
+    routeToMyMeetigs: function() {
+      this.$router.push("/mymeetings/" + this.user);
+    }
+  }
 };
 </script>
 
@@ -50,23 +63,9 @@ nav {
     }
   }
 
-  .login {
+  .logout {
     margin-left: auto;
     font-weight: bold;
-  }
-
-  .signup {
-    background: #faa916;
-    color: #f6f6f6;
-    padding: 0.5rem 1.5rem;
-    border-radius: 5px;
-    font-weight: bold;
-
-    &:hover {
-      color: #faa916;
-      background: #f6f6f6;
-      box-shadow: 2px 6px 8px #0001;
-    }
   }
 }
 </style>
