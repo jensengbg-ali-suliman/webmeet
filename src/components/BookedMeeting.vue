@@ -79,7 +79,7 @@ export default {
   }
 
   &:hover {
-    background: #f6f6f6;
+    background: #fafafa;
     transform: translateY(-6px);
     box-shadow: 2px 6px 10px #0002;
   }
