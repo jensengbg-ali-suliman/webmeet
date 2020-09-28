@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper meetingView">
-    <NavbarMeeting />
+    <Navbar :user="userID" />
 
     <div class="container">
       <section class="aboutMeeting">
@@ -28,10 +28,20 @@
 </template>
 
 <script>
-import NavbarMeeting from "@/components/NavbarMeeting.vue";
+import Navbar from "@/components/Navbar.vue";
 export default {
   components: {
-    NavbarMeeting
+    Navbar
+  },
+  data: () => {
+    return {
+      userID: ""
+    };
+  },
+  created() {
+    console.log(this.$route.params);
+    this.userID = this.$route.params.user;
+    console.log(this.userID, "userID");
   }
 };
 </script>
