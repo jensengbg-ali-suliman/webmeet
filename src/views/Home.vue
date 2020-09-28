@@ -13,6 +13,7 @@
     </div>
     <img src="../assets/laptop.svg" alt class="bottom-img" />
     <meetings />
+    <Footer />
   </div>
 </template>
 
@@ -20,11 +21,13 @@
 // @ is an alias to /src
 import Meetings from "@/components/Meetings.vue";
 import Navbar from "@/components/Navbar.vue";
+import Footer from "@/components/Footer.vue";
 export default {
   name: "Home",
   components: {
     Meetings,
-    Navbar
+    Navbar,
+    Footer
   }
 };
 </script>
