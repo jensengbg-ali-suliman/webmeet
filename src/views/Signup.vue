@@ -104,6 +104,16 @@ export default {
       justify-content: flex-start;
       padding: 0rem 8rem 0rem 1rem;
 
+      .fullName {
+        article {
+          width: 45%;
+        }
+
+        input {
+          width: 100%;
+        }
+      }
+
       div {
         width: 100%;
         @include flex();
