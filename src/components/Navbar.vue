@@ -1,17 +1,21 @@
 <template>
   <nav>
-    <img src="../assets/LOGO webmeet.svg" alt="" class="logo" />
+    <img src="../assets/LOGO webmeet.svg" alt class="logo" />
     <a href="/" class="link">Main page</a>
     <a href="/my-meetings" class="link">My meetings</a>
-    <a href="" class="link login">Log in</a>
-    <a href="" class="link signup">Sign up</a>
+    <a href class="link login">Log in</a>
+    <a href class="link signup">Sign up</a>
   </nav>
 </template>
 
+/*
+make the meetings link visible if data var "loggedIn" is true 
+ */
+
 <script>
 export default {
-  name: 'Navbar',
-}
+  name: "Navbar"
+};
 </script>
 
 <style lang="scss" scoped>
