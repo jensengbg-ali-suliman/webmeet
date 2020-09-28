@@ -3,24 +3,36 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Signup from '../views/Signup.vue'
 import Meeting from '../views/MeetingView.vue'
+import Login from '../views/Login.vue'
+import MyMeetings from '../views/MyMeetings.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/Signup',
-    name: 'Signup',
+    name: 'signup',
     component: Signup,
   },
   {
-    path: '/meeting',
+    path: '/home/:id',
+    name: 'Signup',
+    component: Home,
+  },
+  {
+    path: '/meeting/:id/:user',
     name: 'Meeting',
     component: Meeting,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/mymeetings/:user',
+    name: 'My Meetings',
+    component: MyMeetings,
   },
 ]
 
