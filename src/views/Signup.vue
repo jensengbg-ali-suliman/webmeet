@@ -1,10 +1,14 @@
 <template>
   <div class="wrapper">
-    <navbar />
     <div class="content">
       <section class="textContainer">
-        <h1>welcome.</h1>
+        <p class="welcome">welocome to</p>
+        <h1>webmeet.</h1>
         <p>start creating your account by filling in your information</p>
+        <p class="link">
+          already have an account
+          <a href="/login">log in</a>
+        </p>
       </section>
       <section class="userInfo">
         <div class="fullName">
@@ -33,11 +37,8 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
 export default {
-  components: {
-    Navbar
-  },
+  components: {},
   data: () => {
     return {
       firstName: "",
@@ -87,13 +88,32 @@ export default {
     .textContainer {
       h1 {
         font-family: "Comfortaa", cursive;
-        font-size: 2rem;
+        font-size: 3rem;
+        margin-bottom: 0rem;
+        margin-top: 0.2rem;
       }
       p {
-        color: #aaa;
+        color: #888;
         margin-top: 0.6rem;
         width: 36ch;
         line-height: 1.4rem;
+      }
+
+      .welcome {
+        font-size: 0.8rem;
+        color: #222;
+        font-weight: bold;
+      }
+
+      .link {
+        margin-top: auto;
+        color: #222;
+        font-weight: bold;
+
+        a {
+          margin: 0rem 1rem;
+          color: rgb(24, 103, 199);
+        }
       }
     }
 
