@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <meetings-section meetingTag="IT - tech" :meetings="ithMeetings" />
-    <meetings-section meetingTag="Health awareness" :meetings="healthMeetings" />
-    <meetings-section meetingTag="Planning" :meetings="planningMeetings" />
-    <meetings-section meetingTag="Learning" :meetings="learningMeetings" />
+    <meetings-section meetingTag="IT - tech" :meetings="ithMeetings" :user="user" />
+    <meetings-section meetingTag="Health awareness" :meetings="healthMeetings" :user="user" />
+    <meetings-section meetingTag="Planning" :meetings="planningMeetings" :user="user" />
+    <meetings-section meetingTag="Learning" :meetings="learningMeetings" :user="user" />
   </div>
 </template>
 
@@ -13,6 +13,9 @@ export default {
   name: "Meetings",
   components: {
     MeetingsSection
+  },
+  props: {
+    user: String
   },
   data: () => {
     return {
@@ -28,7 +31,7 @@ export default {
   },
   methods: {
     getMeetings: function() {
-      fetch("https://api.jsonbin.io/b/5f6b3568302a837e956c0b81", {
+      fetch("https://api.jsonbin.io/b/5f6b3568302a837e956c0b81/1", {
         method: "GET",
         headers: {
           "secret-key":
