@@ -31,7 +31,7 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 6rem 4rem;
+    padding: 6rem 0rem;
   }
 }
 </style>
