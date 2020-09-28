@@ -2,7 +2,12 @@
   <div class="meetings">
     <h1>{{ meetingTag }}</h1>
     <section class="meetingsSection">
-      <meeting v-for="meeting in meetings" :key="meeting.meetingId" :meeting="meeting" />
+      <meeting
+        v-for="meeting in meetings"
+        :key="meeting.meetingId"
+        :meeting="meeting"
+        :user="user"
+      />
     </section>
   </div>
 </template>
@@ -13,7 +18,8 @@ export default {
   name: "MeetingsSection",
   props: {
     meetingTag: String,
-    meetings: Array
+    meetings: Array,
+    user: String
   },
   components: {
     Meeting
