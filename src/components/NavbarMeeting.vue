@@ -1,8 +1,6 @@
 <template>
   <nav>
-    <img src="../assets/LOGO webmeet.svg" alt class="logo" />
-
-    <a href class="link back">
+    <a href class="link back" @click="routeToHome">
       <span>&#x276E;</span> back
     </a>
   </nav>
@@ -10,7 +8,12 @@
 
 <script>
 export default {
-  name: "Navbar"
+  name: "Navbar",
+  methods: {
+    routeToHome: function() {
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 
