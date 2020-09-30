@@ -2,9 +2,11 @@
   <div class="bookedmeeting">
     <img src="https://picsum.photos/140/140?random=1" alt />
     <section class="meetingInfo">
-      <h3>{{ meeting.meetingName}}</h3>
+      <h3>{{ meeting.meetingName }}</h3>
       <p>{{ meeting.meetingDate }} {{ meeting.meetingTime }}</p>
-      <button class="review" @click="leaveReview(meeting.meetingID, userID)">review</button>
+      <button class="review" @click="leaveReview(meeting.meetingID, userID)">
+        review
+      </button>
       <button class="delete" @click="getUser(meeting.meetingID)">delete</button>
     </section>
   </div>
@@ -14,64 +16,64 @@
 export default {
   props: {
     meeting: Object,
-    userID: String
+    userID: String,
   },
 
   methods: {
     getUser: async function(meetingID) {
-      let userID = this.$route.params.user;
-      console.log(userID);
-      let url = "https://jsonbin.org/me/users";
-      let API_KEY = "token a9affd15-2f5d-4b80-8f19-531f96900ecf";
+      let userID = this.$route.params.user
+      console.log(userID)
+      let url = 'https://jsonbin.org/me/users'
+      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
 
       const res = await fetch(url, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          authorization: API_KEY
-        }
-      });
-      let result = await res.json();
-      result.map(user => {
+          authorization: API_KEY,
+        },
+      })
+      let result = await res.json()
+      result.map((user) => {
         if (user.userID === userID) {
-          let index = result.indexOf(user);
-          this.getUserMeetings(index, meetingID);
+          let index = result.indexOf(user)
+          this.getUserMeetings(index, meetingID)
         }
-      });
+      })
     },
     getUserMeetings: async function(i, meetingID) {
-      let url = "https://jsonbin.org/me/users/" + i + "/meetingsToAttend";
-      let API_KEY = "token a9affd15-2f5d-4b80-8f19-531f96900ecf";
+      let url = 'https://jsonbin.org/me/users/' + i + '/meetingsToAttend'
+      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
 
       const res = await fetch(url, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          authorization: API_KEY
-        }
-      });
+          authorization: API_KEY,
+        },
+      })
 
-      let result = await res.json();
-      result.map(meeting => {
+      let result = await res.json()
+      result.map((meeting) => {
         if (meeting.meetingID === meetingID) {
-          let meetingIndex = result.indexOf(meeting);
-          this.deleteMeeting(i, meetingIndex);
+          let meetingIndex = result.indexOf(meeting)
+          this.deleteMeeting(i, meetingIndex)
         }
-      });
+      })
     },
     deleteMeeting: async function(i, mI) {
-      let url = "https://jsonbin.org/me/users/" + i + "/meetingsToAttend/" + mI;
-      let API_KEY = "token a9affd15-2f5d-4b80-8f19-531f96900ecf";
+      let url = 'https://jsonbin.org/me/users/' + i + '/meetingsToAttend/' + mI
+      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
 
       const res = await fetch(url, {
-        method: "DELETE",
+        method: 'DELETE',
         headers: {
-          authorization: API_KEY
-        }
-      });
-      console.log(res);
-      location.reload();
-    }
-  }
-};
+          authorization: API_KEY,
+        },
+      })
+      console.log(res)
+      location.reload()
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -134,9 +136,9 @@ export default {
   }
 
   &:hover {
-    background: #fafafa;
-    transform: translateY(-6px);
-    box-shadow: 2px 6px 10px #0002;
+    background: #fdfdfd;
+    transform: translateY(-2px);
+    box-shadow: 2px 6px 10px #0001;
   }
 }
 </style>
