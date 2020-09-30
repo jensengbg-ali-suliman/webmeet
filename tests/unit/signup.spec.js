@@ -27,7 +27,6 @@ describe('Sign up test', () => {
 
   it('should rescive last name and save it to database', () => {
     let expected = userMockObject.lastName
-    console.log(wrapper.vm.user)
     let actual = wrapper.vm.user.lastName
     expect(expected).toBe(actual)
   })
