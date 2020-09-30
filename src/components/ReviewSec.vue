@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 .review {
   width: 40vw;
-  height: 16vh;
+  min-height: 16vh;
   margin: 1rem 0rem;
   padding: 1rem;
   background: #f0f0f0;
@@ -49,6 +49,10 @@ export default {
 
     h4 {
       margin: 0.5rem 0rem;
+    }
+
+    p {
+      line-height: 1.6rem;
     }
   }
 }
