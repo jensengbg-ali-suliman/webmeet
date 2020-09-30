@@ -4,9 +4,7 @@
     <section class="meetingInfo">
       <h3>{{ meeting.meetingName }}</h3>
       <p>{{ meeting.meetingDate }} {{ meeting.meetingTime }}</p>
-      <button class="review" @click="leaveReview(meeting.meetingID, userID)">
-        review
-      </button>
+
       <button class="delete" @click="getUser(meeting.meetingID)">delete</button>
     </section>
   </div>
@@ -106,7 +104,7 @@ export default {
   button {
     align-self: flex-end;
     margin-top: 1rem;
-    padding: 0.4rem 1.2rem;
+    padding: 0.2rem 1rem;
     background: #f49f0a;
     border: none;
     color: #fff;
@@ -116,22 +114,15 @@ export default {
     font-weight: bold;
   }
 
-  .review {
-    &:hover {
-      background: #e6e6e6;
-      color: #f49f0a;
-    }
-  }
-
   .delete {
     background: none;
-    color: #e95252;
-    margin: 0rem 1rem;
-    opacity: 0.6;
+    background: #e95252;
+    color: #f6f6f6;
     font-weight: bold;
 
     &:hover {
-      opacity: 1;
+      background: #f6f6f6;
+      color: #e95252;
     }
   }
 
