@@ -28,7 +28,6 @@ describe('meetings component test', () => {
     const wrapper = mount(Meetings)
     await wrapper.setData({ meetings: mockMeetingsData })
     const actuall = wrapper.vm.meetings.length
-    await console.log(wrapper.vm.meetings)
     expect(expected).toBe(await actuall)
   })
 })
