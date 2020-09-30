@@ -72,12 +72,6 @@ export default {
           this.learningMeetings.push(meeting)
         }
       })
-      console.log([
-        this.ithMeetings,
-        this.healthMeetings,
-        this.planningMeetings,
-        this.learningMeetings,
-      ])
     },
   },
 }
