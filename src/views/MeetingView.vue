@@ -13,8 +13,8 @@
       <section class="specsMeeting">
         <article class="dateSection">
           <img src="../assets/clock.svg" alt />
-          <p class="date">{{ meeting.meetingDate}}</p>
-          <p class="time">{{ meeting.meetingTime}}</p>
+          <p class="date">{{ meeting.meetingDate }}</p>
+          <p class="time">{{ meeting.meetingTime }}</p>
         </article>
         <article class="location">
           <img src="../assets/location.svg" alt class="locationSvg" />
@@ -28,61 +28,60 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
+import Navbar from '@/components/Navbar.vue'
 export default {
   components: {
-    Navbar
+    Navbar,
   },
   data: () => {
     return {
-      userID: "",
-      meetingID: "",
-      meeting: ""
-    };
+      userID: '',
+      meetingID: '',
+      meeting: '',
+    }
   },
   created() {
-    this.userID = this.$route.params.user;
-    this.meetingID = this.$route.params.id;
-    this.getMeetingInfo(this.meetingID);
+    this.userID = this.$route.params.user
+    this.meetingID = this.$route.params.id
+    this.getMeetingInfo(this.meetingID)
   },
   methods: {
     getMeetingInfo: async function(id) {
-      let url = "https://api.jsonbin.io/b/5f6b3568302a837e956c0b81/3";
-      let API_KEY =
-        "$2b$10$JU3Aru2zmVBe81YgmOpOdeGXs2o1wG8/zScHJo64GAltQ44l5k/qG";
-      let response = await fetch(url, {
-        method: "GET",
+      let url = 'https://jsonbin.org/me/meetings'
+      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
+      const response = await fetch(url, {
+        method: 'GET',
         headers: {
-          "secret-key": API_KEY
-        }
-      });
-      let data = await response.json();
-      data.map(meeting => {
+          authorization: API_KEY,
+        },
+      })
+      const data = await response.json()
+      data.map((meeting) => {
         if (meeting.meetingID === id) {
-          this.meeting = meeting;
+          this.meeting = meeting
         }
-      });
-      console.log(this.meeting);
+      })
+      console.log(this.meeting)
     },
     addMeetingToUser: async function() {
-      let url = "https://jsonbin.org/me/users";
-      let API_KEY = "token a9affd15-2f5d-4b80-8f19-531f96900ecf";
+      let url = 'https://jsonbin.org/me/users'
+      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
 
       const res = await fetch(url, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          authorization: API_KEY
-        }
-      });
-      let result = await res.json();
-      result.map(user => {
+          authorization: API_KEY,
+        },
+      })
+      let result = await res.json()
+      result.map((user) => {
         if (user.userID === this.userID) {
-          let index = result.indexOf(user);
-          console.log(index);
-          this.sendMeeting(index);
+          let index = result.indexOf(user)
+          console.log(index)
+          this.sendMeeting(index)
         }
-      });
-      console.log(result);
+      })
+      console.log(result)
     },
 
     sendMeeting: async function(i) {
@@ -90,23 +89,23 @@ export default {
         meetingID: this.meeting.meetingID,
         meetingName: this.meeting.meetingName,
         meetingDate: this.meeting.meetingDate,
-        meetingTime: this.meeting.meetingTime
-      };
-      let url = "https://jsonbin.org/me/users/" + i + "/meetingsToAttend";
-      let API_KEY = "token a9affd15-2f5d-4b80-8f19-531f96900ecf";
+        meetingTime: this.meeting.meetingTime,
+      }
+      let url = 'https://jsonbin.org/me/users/' + i + '/meetingsToAttend'
+      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
 
       const res = await fetch(url, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
-          authorization: API_KEY
+          authorization: API_KEY,
         },
-        body: JSON.stringify(meetingToSend)
-      });
-      console.log(res);
-      alert("Meeting have been added to your meetings!");
-    }
-  }
-};
+        body: JSON.stringify(meetingToSend),
+      })
+      console.log(res)
+      alert('Meeting have been added to your meetings!')
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
