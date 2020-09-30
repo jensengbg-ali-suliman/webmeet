@@ -87,26 +87,6 @@ export default {
       margin: 1rem 0rem;
     }
 
-    .cta {
-      padding: 0.8rem 4rem;
-      margin: 5rem 0rem 1rem 0rem;
-      border: none;
-      color: #f6f6f6;
-      background: #faa916;
-      font-weight: bold;
-      border-radius: 5px;
-      font-size: 1rem;
-      transition: all 0.4s ease;
-      cursor: pointer;
-
-      &:hover {
-        color: #faa916;
-        background: #f6f6f6;
-        box-shadow: 2px 6px 8px #0002;
-        //transform: translateY(-0.4rem);
-      }
-    }
-
     .exp {
       font-weight: bold;
       font-size: 0.8rem;
