@@ -5,6 +5,7 @@ import Signup from '../views/Signup.vue'
 import Meeting from '../views/MeetingView.vue'
 import Login from '../views/Login.vue'
 import MyMeetings from '../views/MyMeetings.vue'
+import Review from '../views/Review.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/mymeetings/:user',
     name: 'My Meetings',
     component: MyMeetings,
+  },
+  {
+    path: '/review/:user/:mID',
+    name: 'Review',
+    component: Review,
   },
 ]
 
