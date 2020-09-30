@@ -57,6 +57,7 @@ export default {
     .date {
       color: #999;
       margin: 1.2rem 0rem 0.8rem 0rem;
+      font-weight: bold;
     }
 
     .description {
