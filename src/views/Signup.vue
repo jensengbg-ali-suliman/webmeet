@@ -4,7 +4,10 @@
       <section class="textContainer">
         <p class="welcome">welocome to</p>
         <h1>webmeet.</h1>
-        <p>start creating your account by filling in your information</p>
+        <p>
+          Your new favorite meeting platform.
+          <br />start creating your account by filling in your information.
+        </p>
         <p class="link">
           already have an account
           <a href="/login">log in</a>
@@ -49,16 +52,70 @@ export default {
       user: {}
     };
   },
+  created() {
+    fetch("https://jsonbin.org/me/users", {
+      method: "GET",
+      headers: {
+        authorization: "token a9affd15-2f5d-4b80-8f19-531f96900ecf"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  },
   methods: {
     sendUserInfo: function() {
-      let userToSend = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password
-      };
+      if (this.password === this.passwordConfirmation) {
+        let ID = (
+          this.firstName +
+          this.lastName.charAt(0).toUpperCase() +
+          this.lastName.slice(1)
+        ).replace(/ /g, "");
+        let userToSend = {
+          firstName:
+            this.firstName.charAt(0).toUpperCase() + this.firstName.slice(1),
+          lastName:
+            this.lastName.charAt(0).toUpperCase() + this.lastName.slice(1),
+          userID: ID,
+          emailAdress: this.email,
+          password: this.password,
+          meetingsToAttend: [],
+          attendedMeetings: []
+        };
 
-      console.log(userToSend);
+        this.sendUserToDB(userToSend);
+
+        fetch("https://jsonbin.org/me/users", {
+          method: "PATCH",
+          headers: {
+            authorization: "token a9affd15-2f5d-4b80-8f19-531f96900ecf"
+          },
+          body: JSON.stringify(userToSend)
+        })
+          .then(res => res.json())
+          .then(data => console.log(data));
+      } else {
+        console.log("Make sure the two passwords you entered match");
+      }
+    },
+    sendUserToDB: async function(data) {
+      // console.log(data);
+      // let url = "https://api.jsonbin.io/b/5f71afbc65b18913fc552bd6/5";
+      // let API_KEY =
+      //   "$2b$10$JU3Aru2zmVBe81YgmOpOdeGXs2o1wG8/zScHJo64GAltQ44l5k/qG";
+      // console.log(JSON.stringify(data));
+
+      // let res = await fetch(url, {
+      //   method: "GET",
+      //   headers: {
+      //     "secret-key": API_KEY,
+      //     "content-type": "application/json"
+      //   }
+      // });
+
+      // let result = await res.json();
+      // await console.log(result);
+
+      console.log(data);
     }
   }
 };
@@ -71,11 +128,14 @@ export default {
   align-items: center;
 }
 .wrapper {
+  width: 100%;
+  height: 100vh;
   .content {
     padding: 6rem 8rem 0rem 8rem;
     width: 100%;
+    height: 100%;
     @include flex();
-    justify-content: flex-start;
+    align-items: flex-start;
 
     section {
       width: 50%;
@@ -89,11 +149,10 @@ export default {
       h1 {
         font-family: "Comfortaa", cursive;
         font-size: 3rem;
-        margin-bottom: 0rem;
         margin-top: 0.2rem;
       }
       p {
-        color: #888;
+        color: #666;
         margin-top: 0.6rem;
         width: 36ch;
         line-height: 1.4rem;
@@ -168,6 +227,8 @@ export default {
         background: #f5f5f5;
         border-radius: 6px;
         color: #222;
+        font-size: 1rem;
+        font-weight: bold;
       }
 
       button {
