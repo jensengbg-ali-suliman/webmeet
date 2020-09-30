@@ -50,17 +50,16 @@ export default {
   },
   methods: {
     getMyMeetings: async function() {
-      let url = "https://api.jsonbin.io/b/5f71afbc65b18913fc552bd6/4";
-      let API_KEY =
-        "$2b$10$JU3Aru2zmVBe81YgmOpOdeGXs2o1wG8/zScHJo64GAltQ44l5k/qG";
+      let url = "https://jsonbin.org/me/users";
+      let API_KEY = "token a9affd15-2f5d-4b80-8f19-531f96900ecf";
       let response = await fetch(url, {
         method: "GET",
         headers: {
-          "secret-key": API_KEY
+          authorization: API_KEY
         }
       });
       let data = await response.json();
-      data.users.map(user => {
+      data.map(user => {
         if (user.userID === this.userID) {
           this.myMeetings = user.meetingsToAttend;
           this.attendedMeetings = user.attendedMeetings;
