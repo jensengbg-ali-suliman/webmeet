@@ -9,7 +9,11 @@
         Expolore meeting about your favorit subjects from the comfort of your
         home
       </p>
-      <button class="cta">explore</button>
+      <p class="exp">
+        scroll down
+        <br />
+        <span>&#x1F893;</span>
+      </p>
     </div>
     <img src="../assets/laptop.svg" alt class="bottom-img" />
     <meetings :user="userID" />
@@ -100,6 +104,26 @@ export default {
         background: #f6f6f6;
         box-shadow: 2px 6px 8px #0002;
         //transform: translateY(-0.4rem);
+      }
+    }
+
+    .exp {
+      font-weight: bold;
+      font-size: 0.8rem;
+      margin-top: 3rem;
+      color: #222;
+      animation: expAnim 2s infinite;
+    }
+
+    @keyframes expAnim {
+      0% {
+        transform: translateY(0rem);
+      }
+      50% {
+        transform: translateY(1rem);
+      }
+      100% {
+        transform: translateY(0rem);
       }
     }
   }
