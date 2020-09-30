@@ -2,9 +2,9 @@
   <div class="meeting">
     <img src="https://picsum.photos/200?random=1" alt />
     <section class="info">
-      <h3>{{meeting.meetingName}}</h3>
-      <p class="date">{{meeting.meetingDate}} - {{meeting.meetingTime}}</p>
-      <p class="description">{{meeting.meetingDescription}}</p>
+      <h3>{{ meeting.meetingName }}</h3>
+      <p class="date">{{ meeting.meetingDate }} - {{ meeting.meetingTime }}</p>
+      <p class="description">{{ meeting.meetingDescription }}</p>
       <button @click="showMeeting(meeting.meetingID)">more</button>
     </section>
   </div>
@@ -12,17 +12,17 @@
 
 <script>
 export default {
-  name: "Meeting",
+  name: 'Meeting',
   props: {
     meeting: Object,
-    user: String
+    user: String,
   },
   methods: {
     showMeeting: function(id) {
-      this.$router.push("/meeting/" + id + "/" + this.user);
-    }
-  }
-};
+      this.$router.push('/meeting/' + id + '/' + this.user)
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -83,8 +83,8 @@ export default {
   }
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 2px 6px 10px #0002;
+    transform: translateY(-6px);
+    box-shadow: 2px 6px 10px #0001;
   }
 }
 </style>
