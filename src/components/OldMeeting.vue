@@ -4,8 +4,9 @@
     <section class="meetingInfo">
       <h3>{{ meeting.meetingName }}</h3>
       <p>{{ meeting.meetingDate }} {{ meeting.meetingTime }}</p>
-
-      <button class="delete" @click="getUser(meeting.meetingID)">delete</button>
+      <button class="review" @click="leaveReview(meeting.meetingID, userID)">
+        review
+      </button>
     </section>
   </div>
 </template>
@@ -38,37 +39,8 @@ export default {
         }
       })
     },
-    getUserMeetings: async function(i, meetingID) {
-      let url = 'https://jsonbin.org/me/users/' + i + '/meetingsToAttend'
-      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
-
-      const res = await fetch(url, {
-        method: 'GET',
-        headers: {
-          authorization: API_KEY,
-        },
-      })
-
-      let result = await res.json()
-      result.map((meeting) => {
-        if (meeting.meetingID === meetingID) {
-          let meetingIndex = result.indexOf(meeting)
-          this.deleteMeeting(i, meetingIndex)
-        }
-      })
-    },
-    deleteMeeting: async function(i, mI) {
-      let url = 'https://jsonbin.org/me/users/' + i + '/meetingsToAttend/' + mI
-      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
-
-      const res = await fetch(url, {
-        method: 'DELETE',
-        headers: {
-          authorization: API_KEY,
-        },
-      })
-      console.log(res)
-      location.reload()
+    leaveReview: function(mID, uID) {
+      this.$router.push('/review/' + uID + '/' + mID)
     },
   },
 }
@@ -114,15 +86,22 @@ export default {
     font-weight: bold;
   }
 
+  .review {
+    &:hover {
+      background: #e6e6e6;
+      color: #f49f0a;
+    }
+  }
+
   .delete {
     background: none;
-    background: #e95252;
-    color: #f6f6f6;
+    color: #e95252;
+    margin: 0rem 1rem;
+    opacity: 0.6;
     font-weight: bold;
 
     &:hover {
-      background: #f6f6f6;
-      color: #e95252;
+      opacity: 1;
     }
   }
 

@@ -1,34 +1,37 @@
 <template>
   <nav>
-    <img src="../assets/LOGO webmeet.svg" alt class="logo" @click="routeToHome" />
-    <a href class="link" @click="routeToHome">Main page</a>
-    <a href class="link" @click="routeToMyMeetigs">My meetings</a>
+    <img
+      src="../assets/LOGO webmeet.svg"
+      alt
+      class="logo"
+      @click="routeToHome"
+    />
+    <a href class="link mainPage" @click="routeToHome">Main page</a>
+    <a href class="link myMeetings" @click="routeToMyMeetigs">My meetings</a>
     <a href class="link logout" @click="routeToLogin">Log out</a>
   </nav>
 </template>
 
-/*
-make the meetings link visible if data var "loggedIn" is true 
- */
+/* make the meetings link visible if data var "loggedIn" is true */
 
 <script>
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   props: {
-    user: String
+    user: String,
   },
   methods: {
     routeToHome: function() {
-      this.$router.push("/home/" + this.user);
+      this.$router.push('/home/' + this.user)
     },
     routeToLogin: function() {
-      this.$router.push("/login");
+      this.$router.push('/login')
     },
     routeToMyMeetigs: function() {
-      this.$router.push("/mymeetings/" + this.user);
-    }
-  }
-};
+      this.$router.push('/mymeetings/' + this.user)
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
