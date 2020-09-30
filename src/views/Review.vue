@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Navbar />
+    <Navbar :user="userID" />
     <textarea
       type="text"
       class="textField"
@@ -20,10 +20,11 @@ export default {
   data: () => {
     return {
       review: '',
+      userID: '',
     }
   },
   created() {
-    console.log(this.$route.params.user, this.$route.params.mID)
+    this.userID = this.$route.params.user
   },
   methods: {
     getMeeting: async function() {
@@ -40,11 +41,9 @@ export default {
       data.map((meeting) => {
         if (meeting.meetingID === id) {
           let i = data.indexOf(meeting)
-          //this.sendReview(i)
-          console.log(i)
+          this.sendReview(i)
         }
       })
-      await console.log(data, 'meetingsDB', id)
     },
 
     sendReview: async function(i) {
@@ -52,20 +51,19 @@ export default {
       if (reviewVal === '') {
         alert('please enter some text')
       } else {
-        let arr = [
-          {
-            user: this.$route.params.user,
-            review: reviewVal,
-          },
-        ]
+        let obj = {
+          user: this.$route.params.user,
+          review: reviewVal,
+        }
+
         let url = `https://jsonbin.org/me/meetings/${i}/reviews`
         let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
         let response = await fetch(url, {
-          method: 'POST',
+          method: 'PATCH',
           headers: {
             authorization: API_KEY,
           },
-          body: JSON.stringify(arr),
+          body: JSON.stringify(obj),
         })
         let data = await response.json()
         console.log(data)
