@@ -43,7 +43,8 @@ export default {
           console.log(data);
           this.meetings = data;
           this.filterMeetings(data);
-        });
+        })
+        .catch(err => console.log(err));
     },
     filterMeetings: function(data) {
       data.map(meeting => {
