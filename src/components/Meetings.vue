@@ -1,21 +1,37 @@
 <template>
   <div class="wrapper">
-    <meetings-section meetingTag="IT - tech" :meetings="ithMeetings" :user="user" />
-    <meetings-section meetingTag="Health awareness" :meetings="healthMeetings" :user="user" />
-    <meetings-section meetingTag="Planning" :meetings="planningMeetings" :user="user" />
-    <meetings-section meetingTag="Learning" :meetings="learningMeetings" :user="user" />
+    <meetings-section
+      meetingTag="IT - tech"
+      :meetings="ithMeetings"
+      :user="user"
+    />
+    <meetings-section
+      meetingTag="Health awareness"
+      :meetings="healthMeetings"
+      :user="user"
+    />
+    <meetings-section
+      meetingTag="Planning"
+      :meetings="planningMeetings"
+      :user="user"
+    />
+    <meetings-section
+      meetingTag="Learning"
+      :meetings="learningMeetings"
+      :user="user"
+    />
   </div>
 </template>
 
 <script>
-import MeetingsSection from "@/components/MeetingsSection.vue";
+import MeetingsSection from '@/components/MeetingsSection.vue'
 export default {
-  name: "Meetings",
+  name: 'Meetings',
   components: {
-    MeetingsSection
+    MeetingsSection,
   },
   props: {
-    user: String
+    user: String,
   },
   data: () => {
     return {
@@ -23,50 +39,48 @@ export default {
       ithMeetings: [],
       healthMeetings: [],
       planningMeetings: [],
-      learningMeetings: []
-    };
+      learningMeetings: [],
+    }
   },
   created() {
-    this.getMeetings();
+    this.getMeetings()
   },
   methods: {
-    getMeetings: function() {
-      fetch("https://api.jsonbin.io/b/5f6b3568302a837e956c0b81/3", {
-        method: "GET",
+    getMeetings: async function() {
+      let url = 'https://jsonbin.org/me/meetings'
+      let API_KEY = 'token a9affd15-2f5d-4b80-8f19-531f96900ecf'
+      const response = await fetch(url, {
+        method: 'GET',
         headers: {
-          "secret-key":
-            "$2b$10$JU3Aru2zmVBe81YgmOpOdeGXs2o1wG8/zScHJo64GAltQ44l5k/qG"
-        }
+          authorization: API_KEY,
+        },
       })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          this.meetings = data;
-          this.filterMeetings(data);
-        })
-        .catch(err => console.log(err));
+      const data = await response.json()
+
+      this.meetings = data
+      this.filterMeetings(data)
     },
     filterMeetings: function(data) {
-      data.map(meeting => {
-        if (meeting.meetingTag === "IT-tech") {
-          this.ithMeetings.push(meeting);
-        } else if (meeting.meetingTag === "Health awareness") {
-          this.healthMeetings.push(meeting);
-        } else if (meeting.meetingTag === "Goals and planning") {
-          this.planningMeetings.push(meeting);
-        } else if (meeting.meetingTag === "Learning") {
-          this.learningMeetings.push(meeting);
+      data.map((meeting) => {
+        if (meeting.meetingTag === 'IT-tech') {
+          this.ithMeetings.push(meeting)
+        } else if (meeting.meetingTag === 'Health awareness') {
+          this.healthMeetings.push(meeting)
+        } else if (meeting.meetingTag === 'Goals and planning') {
+          this.planningMeetings.push(meeting)
+        } else if (meeting.meetingTag === 'Learning') {
+          this.learningMeetings.push(meeting)
         }
-      });
+      })
       console.log([
         this.ithMeetings,
         this.healthMeetings,
         this.planningMeetings,
-        this.learningMeetings
-      ]);
-    }
-  }
-};
+        this.learningMeetings,
+      ])
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
