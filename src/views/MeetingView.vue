@@ -24,14 +24,25 @@
         <button class="cta" @click="addMeetingToUser">attend</button>
       </section>
     </div>
+    <section class="reviews">
+      <h3>Reviews</h3>
+      <ReviewSec
+        v-for="review in meeting.reviews"
+        :key="review.user"
+        :user="review.user"
+        :review="review.review"
+      />
+    </section>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue'
+import ReviewSec from '@/components/ReviewSec.vue'
 export default {
   components: {
     Navbar,
+    ReviewSec,
   },
   data: () => {
     return {
@@ -120,7 +131,7 @@ export default {
     @include flex();
     align-items: flex-start;
     padding: 2rem 10rem;
-    margin: 2rem 0rem;
+    margin: 2rem 0rem 0rem 0rem;
 
     .aboutMeeting {
       width: 70%;
@@ -207,6 +218,14 @@ export default {
           //transform: translateY(-0.4rem);
         }
       }
+    }
+  }
+
+  .reviews {
+    padding: 0rem 10rem;
+
+    h3 {
+      margin-bottom: 2rem;
     }
   }
 }
