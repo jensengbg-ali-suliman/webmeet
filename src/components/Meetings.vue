@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     getMeetings: function() {
-      fetch("https://api.jsonbin.io/b/5f6b3568302a837e956c0b81/1", {
+      fetch("https://api.jsonbin.io/b/5f6b3568302a837e956c0b81/3", {
         method: "GET",
         headers: {
           "secret-key":
